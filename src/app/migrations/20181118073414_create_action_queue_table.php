@@ -21,7 +21,7 @@ class CreateActionQueueTable extends AbstractMigration
             ->addColumn('finished_at_time_zone', 'string', ['null' => true])
             ->addColumn('class', 'text')
             ->addColumn('method', 'text')
-            ->addColumn('context_json', 'text', ['null' => true])
+            ->addColumn('context', 'text', ['null' => true])
             ->create();
     }
 }
