@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 use src\app\cli\actions\core\ActionsAction;
 use Symfony\Component\Console\Output\ConsoleOutput;
-use Symfony\Component\Console\Output\OutputInterface;
 
 return [
     ActionsAction::class => function () {
