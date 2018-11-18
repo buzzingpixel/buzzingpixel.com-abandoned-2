@@ -13,8 +13,8 @@ class CreateActionQueueTable extends AbstractMigration
      */
     public function change(): void
     {
-        $table = $this->table('action_queue');
-        $table->addColumn('has_run', 'boolean', ['default' => '0'])
+        $this->table('action_queue')
+            ->addColumn('has_run', 'boolean', ['default' => '0'])
             ->addColumn('added_at', 'datetime')
             ->addColumn('added_at_time_zone', 'string')
             ->addColumn('finished_at', 'datetime', ['null' => true])
