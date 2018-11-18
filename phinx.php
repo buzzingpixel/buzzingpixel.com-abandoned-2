@@ -8,7 +8,7 @@ return [
         'seeds' => '%%PHINX_CONFIG_DIR%%' . $sep . 'src' . $sep . 'app' . $sep . 'seeds'
     ],
     'environments' => [
-        'default_migration_table' => 'phinxlog',
+        'default_migration_table' => 'migrations',
         'default_database' => 'production',
         'production' => [
             'adapter' => 'mysql',
