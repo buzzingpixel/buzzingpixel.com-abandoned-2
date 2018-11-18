@@ -17,7 +17,8 @@ return [
             'user' => getenv('DB_USER'),
             'pass' => getenv('DB_PASSWORD'),
             'port' => '3306',
-            'charset' => 'utf8',
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_general_ci',
         ],
     ],
     'version_order' => 'creation'
