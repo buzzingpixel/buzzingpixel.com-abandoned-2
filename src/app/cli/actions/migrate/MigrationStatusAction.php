@@ -39,10 +39,11 @@ class MigrationStatusAction
 
     /**
      * Lists migration status
+     * @return null|int
      */
-    public function __invoke()
+    public function __invoke(): ?int
     {
         $input = $this->arrayInputFactory->make(['status']);
-        $this->phinxApplication->doRun($input, $this->consoleOutput);
+        return $this->phinxApplication->doRun($input, $this->consoleOutput);
     }
 }

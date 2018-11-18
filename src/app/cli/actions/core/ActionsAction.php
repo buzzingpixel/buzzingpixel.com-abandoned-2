@@ -31,8 +31,9 @@ class ActionsAction
 
     /**
      * Runs the action
+     * @return null|int
      */
-    public function __invoke()
+    public function __invoke(): ?int
     {
         $this->consoleOutput->writeln(
             '<fg=green>BuzzingPixel Command Line</>' . PHP_EOL
@@ -93,5 +94,7 @@ class ActionsAction
 
             $this->consoleOutput->writeln('');
         }
+
+        return null;
     }
 }

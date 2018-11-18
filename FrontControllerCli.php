@@ -51,4 +51,4 @@ if (! $class) {
     $class = new $actionClass;
 }
 
-$class->{$actionMethod}(new CliArgumentsModel($argv));
+exit($class->{$actionMethod}(new CliArgumentsModel($argv)));

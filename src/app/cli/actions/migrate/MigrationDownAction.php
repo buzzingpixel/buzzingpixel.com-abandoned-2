@@ -47,8 +47,10 @@ class MigrationDownAction
 
     /**
      * Lists migration status
+     * @param CliArgumentsModel $argModel
+     * @return null|int
      */
-    public function __invoke(CliArgumentsModel $argModel)
+    public function __invoke(CliArgumentsModel $argModel): ?int
     {
         $params = [
             'rollback',
@@ -67,6 +69,6 @@ class MigrationDownAction
 
         $input = $this->arrayInputFactory->make($params);
 
-        $this->phinxApplication->doRun($input, $this->consoleOutput);
+        return $this->phinxApplication->doRun($input, $this->consoleOutput);
     }
 }

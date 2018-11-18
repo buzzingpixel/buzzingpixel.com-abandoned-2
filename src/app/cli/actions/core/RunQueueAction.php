@@ -10,8 +10,9 @@ class RunQueueAction
 {
     /**
      * Runs the queue
+     * @return null|int
      */
-    public function __invoke()
+    public function __invoke(): ?int
     {
         // TODO: Implement RunQueueAction::__invoke()
         var_dump('TODO: Implement RunQueueAction::__invoke()');

@@ -55,8 +55,9 @@ class CreateMigrationAction
     /**
      * Creates a migration
      * @param CliArgumentsModel $argModel
+     * @return null|int
      */
-    public function __invoke(CliArgumentsModel $argModel)
+    public function __invoke(CliArgumentsModel $argModel): ?int
     {
         if (! $name = $argModel->getArgumentByIndex(2)) {
             $name = $this->cliQuestionService->ask(
@@ -71,6 +72,6 @@ class CreateMigrationAction
             'name' => $name
         ]);
 
-        $this->phinxApplication->doRun($input, $this->consoleOutput);
+        return $this->phinxApplication->doRun($input, $this->consoleOutput);
     }
 }
