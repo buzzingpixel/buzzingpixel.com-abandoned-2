@@ -4,27 +4,24 @@ declare(strict_types=1);
 use Phinx\Migration\AbstractMigration;
 
 /**
- * Class CreateActionQueueTable
+ * Class CreateActionQueueItemsTable
  * @noinspection AutoloadingIssuesInspection
  */
-class CreateActionQueueTable extends AbstractMigration
+class CreateActionQueueItemsTable extends AbstractMigration
 {
     /**
-     * Creates the action queue table
+     * Creates the action queue items table
      */
     public function change(): void
     {
-        $this->table('action_queue')
+        $this->table('action_queue_items')
             ->addColumn('guid', 'string')
-            ->addColumn('name', 'string')
-            ->addColumn('title', 'string')
-            ->addColumn('has_started', 'boolean', ['default' => '0'])
+            ->addColumn('action_queue_guid', 'string')
             ->addColumn('is_finished', 'boolean', ['default' => '0'])
-            ->addColumn('percent_complete', 'float', ['default' => '0'])
-            ->addColumn('added_at', 'datetime')
-            ->addColumn('added_at_time_zone', 'string')
             ->addColumn('finished_at', 'datetime', ['null' => true])
             ->addColumn('finished_at_time_zone', 'string', ['null' => true])
+            ->addColumn('class', 'text')
+            ->addColumn('method', 'text')
             ->addColumn('context', 'text', ['null' => true])
             ->create();
     }
