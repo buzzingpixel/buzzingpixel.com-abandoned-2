@@ -29,6 +29,9 @@ class ActionsAction
         $this->cliActionConfig = $cliActionConfig;
     }
 
+    /**
+     * Runs the action
+     */
     public function __invoke()
     {
         $this->consoleOutput->writeln(

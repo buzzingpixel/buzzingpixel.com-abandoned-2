@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use src\app\Di;
+use src\app\cli\models\CliArgumentsModel;
 use NunoMaduro\Collision\Provider as Collision;
 use src\app\cli\exceptions\ActionNotFoundException;
 use src\app\cli\exceptions\InvalidActionArgumentException;
@@ -50,6 +51,4 @@ if (! $class) {
     $class = new $actionClass;
 }
 
-// TODO: parse arguments and send them to the action in some manner
-
-$class->{$actionMethod}();
+$class->{$actionMethod}(new CliArgumentsModel($argv));
