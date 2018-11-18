@@ -29,8 +29,7 @@ class Di
 
         try {
             $sep = DIRECTORY_SEPARATOR;
-            $diConfig = require APP_BASE_PATH . $sep . 'src' . $sep . 'app' .
-                $sep . 'config' . $sep . 'di' . $sep . '_collector.php';
+            $diConfig = require APP_BASE_PATH . $sep . 'src' . $sep . 'config' . $sep . 'di' . $sep . '_collector.php';
 
             self::$diContainer = (new ContainerBuilder())
                 ->useAutowiring(false)

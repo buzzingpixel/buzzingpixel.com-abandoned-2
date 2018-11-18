@@ -9,7 +9,7 @@ $finalIterator = new RegexIterator(
     RecursiveRegexIterator::GET_MATCH
 );
 
-$diConfig = $collect = [];
+$config = $collect = [];
 
 foreach ($finalIterator as $files) {
     foreach ($files as $file) {
@@ -29,8 +29,8 @@ foreach ($finalIterator as $files) {
 
 foreach ($collect as $item) {
     foreach ($item as $key => $val) {
-        $diConfig[$key] = $val;
+        $config[$key] = $val;
     }
 }
 
-return $diConfig;
+return $config;
