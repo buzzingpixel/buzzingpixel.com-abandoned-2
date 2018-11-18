@@ -14,6 +14,9 @@ class CliArgumentsModel
     /** @var array $parsedArguments */
     private $parsedArguments = [];
 
+    /** @var array $parsedArgumentsByIndex */
+    private $parsedArgumentsByIndex = [];
+
     /**
      * CliArgumentsModel constructor
      * @param array $rawArguments
@@ -33,24 +36,26 @@ class CliArgumentsModel
     {
         $this->rawArguments = $rawArguments = array_values($rawArguments);
 
-        $parsedArguments = [];
+        $index = 0;
 
         foreach ($rawArguments as $rawArgument) {
-            $rawArgument = explode('--', $rawArgument);
+            $check = explode('--', $rawArgument);
 
-            if (\count($rawArgument) < 2) {
-                continue;
+            if (\count($check) >= 2) {
+                unset($check[0]);
+                $rawArgument = $check[1];
             }
-
-            unset($rawArgument[0]);
-            $rawArgument = $rawArgument[1];
 
             $rawArgument = explode('=', $rawArgument);
 
-            $parsedArguments[$rawArgument[0]] = $rawArgument[1] ?? '';
-        }
+            $this->parsedArguments[$rawArgument[0]] = $rawArgument[1] ??
+                $rawArgument[0];
 
-        $this->parsedArguments = $parsedArguments;
+            $this->parsedArgumentsByIndex[$index] =
+                $this->parsedArguments[$rawArgument[0]];
+
+            $index++;
+        }
 
         return $this;
     }
@@ -76,11 +81,22 @@ class CliArgumentsModel
     /**
      * Gets a specific argument
      * @param string $key
-     * @param mixed $fallback
+     * @param null|string $fallback
      * @return string|null
      */
-    public function getArgument(string $key, $fallback = null): ?string
+    public function getArgument(string $key, ?string $fallback = null): ?string
     {
         return $this->parsedArguments[$key] ?? $fallback;
+    }
+
+    /**
+     * Gets an argument value by index
+     * @param int $index
+     * @param null|string $fallback
+     * @return null|string
+     */
+    public function getArgumentByIndex(int $index, ?string $fallback = null): ?string
+    {
+        return $this->parsedArgumentsByIndex[$index] ?? $fallback;
     }
 }
