@@ -1,4 +1,3 @@
 <?php
 declare(strict_types=1);
-
-echo 'hello world!';
+require dirname(__DIR__) . '/FrontController.php';
