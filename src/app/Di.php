@@ -135,6 +135,6 @@ class Di
      */
     public function hasDefinition(string $def)
     {
-        return self::make($def);
+        return self::has($def);
     }
 }
