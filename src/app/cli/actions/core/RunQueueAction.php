@@ -6,7 +6,9 @@ namespace src\app\cli\actions\core;
 use Exception;
 use src\app\Di;
 use src\app\exceptions\DiBuilderException;
+use src\app\queue\models\ActionQueueItemModel;
 use src\app\queue\services\GetNextQueueItemService;
+use src\app\queue\services\MarkAsStoppedDueToError;
 
 /**
  * Class RunQueueAction
@@ -15,29 +17,19 @@ class RunQueueAction
 {
     private $di;
     private $nextQueueItem;
+    private $markAsStoppedDueToError;
 
     public function __construct(
         Di $di,
-        GetNextQueueItemService $nextQueueItem
+        GetNextQueueItemService $nextQueueItem,
+        MarkAsStoppedDueToError $markAsStoppedDueToError
     ) {
         $this->di = $di;
         $this->nextQueueItem = $nextQueueItem;
+        $this->markAsStoppedDueToError = $markAsStoppedDueToError;
     }
 
     public function __invoke(): ?int
-    {
-        try {
-            return $this->run();
-        } catch (Exception $e) {
-            var_dump('TODO: Mark action as stopped due to error');
-            return 1;
-        }
-    }
-
-    /**
-     * @throws DiBuilderException
-     */
-    private function run(): ?int
     {
         $item = $this->nextQueueItem->get(true);
 
@@ -45,6 +37,19 @@ class RunQueueAction
             return null;
         }
 
+        try {
+            return $this->run($item);
+        } catch (Exception $e) {
+            $this->markAsStoppedDueToError->markStopped($item);
+            return 1;
+        }
+    }
+
+    /**
+     * @throws DiBuilderException
+     */
+    private function run(ActionQueueItemModel $item): ?int
+    {
         $constructedClass = null;
 
         if ($this->di->hasDefinition($item->class)) {

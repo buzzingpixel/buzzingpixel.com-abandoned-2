@@ -16,34 +16,19 @@ use src\app\data\ActionQueueItem\ActionQueueItemSelect;
  */
 class GetNextQueueItemService
 {
-    /** @var AtlasFactory $atlas */
     private $atlas;
 
-    /**
-     * AddToQueueService constructor
-     * @param AtlasFactory $atlas
-     */
     public function __construct(
         AtlasFactory $atlas
     ) {
         $this->atlas = $atlas;
     }
 
-    /**
-     * Gets the next action queue item
-     * @param bool $markAsStarted
-     * @return null|ActionQueueItemModel
-     */
     public function __invoke(bool $markAsStarted = false): ?ActionQueueItemModel
     {
         return $this->get($markAsStarted);
     }
 
-    /**
-     * Gets the next action queue item
-     * @param bool $markAsStarted
-     * @return null|ActionQueueItemModel
-     */
     public function get(bool $markAsStarted = false): ?ActionQueueItemModel
     {
         try {
@@ -65,7 +50,7 @@ class GetNextQueueItemService
                 return null;
             }
 
-            if ($markAsStarted) {
+            if ($markAsStarted && ! $actionQueueRecord->has_started) {
                 $actionQueueRecord->has_started = true;
                 $this->atlas->make()->persist($actionQueueRecord);
             }
@@ -84,7 +69,6 @@ class GetNextQueueItemService
     }
 
     /**
-     * @return null|ActionQueueRecord
      * @throws AtlasMapperException
      */
     private function fetchActionQueueRecord(): ?ActionQueueRecord

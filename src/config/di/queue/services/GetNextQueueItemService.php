@@ -7,7 +7,7 @@ use src\app\queue\services\GetNextQueueItemService;
 return [
     GetNextQueueItemService::class => function () {
         return new GetNextQueueItemService(
-            new AtlasFactory
+            new AtlasFactory()
         );
     },
 ];

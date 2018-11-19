@@ -9,7 +9,7 @@ return [
     AddToQueueService::class => function () {
         return new AddToQueueService(
             new UuidFactory(),
-            new AtlasFactory
+            new AtlasFactory()
         );
     },
 ];
