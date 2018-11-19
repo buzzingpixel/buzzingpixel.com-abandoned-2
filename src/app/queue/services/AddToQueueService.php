@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace src\app\queue\services;
 
 use DateTime;
+use DateTimeZone;
 use src\app\factories\UuidFactory;
 use src\app\data\factory\AtlasFactory;
 use src\app\data\ActionQueue\ActionQueue;
@@ -70,6 +71,7 @@ class AddToQueueService
         $atlas = $this->atlas->make();
 
         $dateTime = new DateTime();
+        $dateTime->setTimezone(new DateTimeZone('UTC'));
 
         $this->validateModel($model);
         $this->setGuid($model);
@@ -81,7 +83,7 @@ class AddToQueueService
         foreach ($model->items as $item) {
             $items->appendNew([
                 'guid' => $item->guid,
-                'order' => $order,
+                'order_to_run' => $order,
                 'action_queue_guid' => $model->guid,
                 'is_finished' => false,
                 'finished_at' => null,
