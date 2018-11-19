@@ -56,14 +56,14 @@ class MigrationDownAction
             'rollback',
         ];
 
-        if (! $target = $argModel->getArgumentByIndex(2)) {
+        if (($target = $argModel->getArgumentByIndex(2)) === null) {
             $target = $this->cliQuestionService->ask(
                 '<fg=cyan>Specify target (0 to revert all, blank to revert last): </>',
                 false
             );
         }
 
-        if ($target) {
+        if ($target !== '') {
             $params['--target'] = $target;
         }
 
