@@ -11,7 +11,7 @@ use Atlas\Table\Row;
 /**
  * @property mixed $id int(10,0) NOT NULL
  * @property mixed $guid varchar(255) NOT NULL
- * @property mixed $order int(10,0) NOT NULL
+ * @property mixed $order_to_run int(10,0) NOT NULL
  * @property mixed $action_queue_guid varchar(255) NOT NULL
  * @property mixed $is_finished tinyint(3,0) NOT NULL
  * @property mixed $finished_at datetime
@@ -25,7 +25,7 @@ class ActionQueueItemRow extends Row
     protected $cols = [
         'id' => null,
         'guid' => null,
-        'order' => null,
+        'order_to_run' => null,
         'action_queue_guid' => null,
         'is_finished' => '0',
         'finished_at' => 'NULL',
