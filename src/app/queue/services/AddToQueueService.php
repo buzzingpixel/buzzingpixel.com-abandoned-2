@@ -37,13 +37,13 @@ class AddToQueueService
     }
 
     /**
-     * Alias to __invoke
+     * Adds an item to the queue
      * @param ActionQueueModel $model
      * @throws InvalidActionQueueModel
      */
-    public function add(ActionQueueModel $model): void
+    public function __invoke(ActionQueueModel $model): void
     {
-        $this->__invoke($model);
+        $this->add($model);
     }
 
     /**
@@ -51,7 +51,7 @@ class AddToQueueService
      * @param ActionQueueModel $model
      * @throws InvalidActionQueueModel
      */
-    public function __invoke(ActionQueueModel $model): void
+    public function add(ActionQueueModel $model): void
     {
         try {
             $this->addModel($model);
@@ -76,9 +76,12 @@ class AddToQueueService
 
         $items = $atlas->newRecordSet(ActionQueueItem::class);
 
+        $order = 1;
+
         foreach ($model->items as $item) {
             $items->appendNew([
                 'guid' => $item->guid,
+                'order' => $order,
                 'action_queue_guid' => $model->guid,
                 'is_finished' => false,
                 'finished_at' => null,
@@ -87,6 +90,8 @@ class AddToQueueService
                 'method' => $item->method,
                 'context' => json_encode($item->context),
             ]);
+
+            $order++;
         }
 
         $record = $atlas->newRecord(ActionQueue::class);

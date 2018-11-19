@@ -44,6 +44,17 @@ class ActionQueueItemTable extends Table
             'primary' => false,
             'options' => null,
         ],
+        'order' => [
+            'name' => 'order',
+            'type' => 'int',
+            'size' => 10,
+            'scale' => 0,
+            'notnull' => true,
+            'default' => null,
+            'autoinc' => false,
+            'primary' => false,
+            'options' => null,
+        ],
         'action_queue_guid' => [
             'name' => 'action_queue_guid',
             'type' => 'varchar',
@@ -126,6 +137,7 @@ class ActionQueueItemTable extends Table
     const COLUMN_NAMES = [
         'id',
         'guid',
+        'order',
         'action_queue_guid',
         'is_finished',
         'finished_at',
@@ -138,6 +150,7 @@ class ActionQueueItemTable extends Table
     const COLUMN_DEFAULTS = [
         'id' => null,
         'guid' => null,
+        'order' => null,
         'action_queue_guid' => null,
         'is_finished' => '0',
         'finished_at' => 'NULL',
