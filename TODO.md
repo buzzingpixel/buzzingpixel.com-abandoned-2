@@ -1,0 +1,3 @@
+- [ ] Middleware for checking actions (set up a second Fast route instance as a catch all?)
+- [ ] Middleware for CSRF (https://github.com/Grafikart/PSR15-CsrfMiddleware)
+- [ ] User login (https://www.johnmorrisonline.com/build-php-login-form-using-sessions/)
