@@ -7,8 +7,9 @@ use Exception;
 use src\app\Di;
 use src\app\exceptions\DiBuilderException;
 use src\app\queue\models\ActionQueueItemModel;
+use src\app\queue\services\MarkItemAsRunService;
 use src\app\queue\services\GetNextQueueItemService;
-use src\app\queue\services\MarkAsStoppedDueToError;
+use src\app\queue\services\MarkAsStoppedDueToErrorService;
 
 /**
  * Class RunQueueAction
@@ -18,15 +19,18 @@ class RunQueueAction
     private $di;
     private $nextQueueItem;
     private $markAsStoppedDueToError;
+    private $markItemAsRunService;
 
     public function __construct(
         Di $di,
         GetNextQueueItemService $nextQueueItem,
-        MarkAsStoppedDueToError $markAsStoppedDueToError
+        MarkAsStoppedDueToErrorService $markAsStoppedDueToError,
+        MarkItemAsRunService $markItemAsRunService
     ) {
         $this->di = $di;
         $this->nextQueueItem = $nextQueueItem;
         $this->markAsStoppedDueToError = $markAsStoppedDueToError;
+        $this->markItemAsRunService = $markItemAsRunService;
     }
 
     public function __invoke(): ?int
@@ -62,7 +66,7 @@ class RunQueueAction
 
         $constructedClass->{$item->method}($item->context);
 
-        // TODO: Mark item as run
+        $this->markItemAsRunService->markAsRun($item);
 
         return null;
     }

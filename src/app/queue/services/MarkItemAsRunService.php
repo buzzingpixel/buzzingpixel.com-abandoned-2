@@ -11,25 +11,25 @@ use src\app\queue\models\ActionQueueItemModel;
 use src\app\data\ActionQueueItem\ActionQueueItem;
 use src\app\data\ActionQueueItem\ActionQueueItemRecord;
 
-class MarkAsStoppedDueToError
+class MarkItemAsRunService
 {
     private $atlas;
+    private $updateActionQueueService;
 
     public function __construct(
-        AtlasFactory $atlas
+        AtlasFactory $atlas,
+        UpdateActionQueueService $updateActionQueueService
     ) {
         $this->atlas = $atlas;
+        $this->updateActionQueueService = $updateActionQueueService;
     }
 
-    /**
-     * @param ActionQueueItemModel $model
-     */
     public function __invoke(ActionQueueItemModel $model): void
     {
-        $this->markStopped($model);
+        $this->markAsRun($model);
     }
 
-    public function markStopped(ActionQueueItemModel $model): void
+    public function markAsRun(ActionQueueItemModel $model): void
     {
         try {
             $dateTime = new DateTime();
@@ -43,15 +43,14 @@ class MarkAsStoppedDueToError
                 ->with(['action_queue'])
                 ->fetchRecord();
 
-            $record->action_queue->is_finished = true;
-            $record->action_queue->finished_due_to_error = true;
-            $record->action_queue->finished_at = $dateTime
-                ->format('Y-m-d H:i:s');
-            $record->action_queue->finished_at_time_zone = $dateTime
-                ->getTimezone()
+            $record->is_finished = true;
+            $record->finished_at = $dateTime->format('Y-m-d H:i:s');
+            $record->finished_at_time_zone = $dateTime->getTimezone()
                 ->getName();
 
             $atlas->persist($record);
+
+            $this->updateActionQueueService->update($record->action_queue_guid);
         } catch (Exception $e) {
         }
     }
