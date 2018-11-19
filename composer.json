@@ -14,7 +14,8 @@
         "relay/relay": "2.x@dev",
         "robmorgan/phinx": "^0.10.6",
         "atlas/orm": "^3.1",
-        "atlas/cli": "^2.2"
+        "atlas/cli": "^2.2",
+        "ramsey/uuid": "^3.8"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master"

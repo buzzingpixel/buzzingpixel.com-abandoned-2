@@ -19,6 +19,7 @@ namespace src\app\data\ActionQueue;
  * @property mixed $finished_at datetime
  * @property mixed $finished_at_time_zone varchar(255)
  * @property mixed $context text(65535)
+ * @property null|\src\app\data\ActionQueueItem\ActionQueueItemRecordSet $action_queue_items
  */
 trait ActionQueueFields
 {

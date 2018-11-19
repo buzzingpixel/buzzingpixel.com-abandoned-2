@@ -16,6 +16,7 @@ namespace src\app\data\ActionQueueItem;
  * @property mixed $class text(65535) NOT NULL
  * @property mixed $method text(65535) NOT NULL
  * @property mixed $context text(65535)
+ * @property null|false|\src\app\data\ActionQueue\ActionQueueRecord $action_queue
  */
 trait ActionQueueItemFields
 {
