@@ -102,6 +102,7 @@ class AddToQueueService
         $record->title = $model->title;
         $record->has_started = false;
         $record->is_finished = false;
+        $record->finished_due_to_error = false;
         $record->percent_complete = 0;
         $record->added_at = $dateTime->format('Y-m-d H:i:s');
         $record->added_at_time_zone = $dateTime->getTimezone()->getName();

@@ -20,6 +20,7 @@ class CreateActionQueueTable extends AbstractMigration
             ->addColumn('title', 'string')
             ->addColumn('has_started', 'boolean', ['default' => '0'])
             ->addColumn('is_finished', 'boolean', ['default' => '0'])
+            ->addColumn('finished_due_to_error', 'boolean', ['default' => '0'])
             ->addColumn('percent_complete', 'float', ['default' => '0'])
             ->addColumn('added_at', 'datetime')
             ->addColumn('added_at_time_zone', 'string')
