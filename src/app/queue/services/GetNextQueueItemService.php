@@ -31,18 +31,20 @@ class GetNextQueueItemService
 
     /**
      * Gets the next action queue item
+     * @param bool $markAsStarted
      * @return null|ActionQueueItemModel
      */
-    public function __invoke(): ?ActionQueueItemModel
+    public function __invoke(bool $markAsStarted = false): ?ActionQueueItemModel
     {
-        return $this->get();
+        return $this->get($markAsStarted);
     }
 
     /**
      * Gets the next action queue item
+     * @param bool $markAsStarted
      * @return null|ActionQueueItemModel
      */
-    public function get(): ?ActionQueueItemModel
+    public function get(bool $markAsStarted = false): ?ActionQueueItemModel
     {
         try {
             $actionQueueRecord = $this->fetchActionQueueRecord();
@@ -61,6 +63,11 @@ class GetNextQueueItemService
                 $actionQueueRecord->percent_complete = 100;
                 $this->atlas->make()->persist($actionQueueRecord);
                 return null;
+            }
+
+            if ($markAsStarted) {
+                $actionQueueRecord->has_started = true;
+                $this->atlas->make()->persist($actionQueueRecord);
             }
 
             $model = new ActionQueueItemModel();
