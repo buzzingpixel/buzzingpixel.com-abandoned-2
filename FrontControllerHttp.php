@@ -6,6 +6,7 @@ use Relay\Relay;
 use Middlewares\FastRoute;
 use FastRoute\RouteCollector;
 use Middlewares\RequestHandler;
+use src\app\http\ActionParamRouter;
 use function FastRoute\simpleDispatcher;
 use Zend\Diactoros\ServerRequestFactory;
 use Franzl\Middleware\Whoops\WhoopsMiddleware;
@@ -21,6 +22,9 @@ if (getenv('DEV_MODE') === 'true') {
     $whoops->register();
     $middlewareQueue[] = new WhoopsMiddleware();
 }
+
+/** @noinspection PhpUnhandledExceptionInspection */
+$middlewareQueue[] = Di::get(ActionParamRouter::class);
 
 $middlewareQueue[] = new FastRoute(simpleDispatcher(
     function (RouteCollector $routeCollector) {
