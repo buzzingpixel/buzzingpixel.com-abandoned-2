@@ -2,6 +2,7 @@
     "require": {
         "php": ">=7.2",
         "ext-json": "*",
+        "ext-pdo": "*",
         "vlucas/phpdotenv": "^2.5",
         "filp/whoops": "^2.3",
         "nunomaduro/collision": "^2.1",

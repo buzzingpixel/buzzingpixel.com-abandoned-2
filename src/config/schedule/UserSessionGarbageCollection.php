@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-use src\app\Noop;
+use src\app\users\services\SessionGarbageCollectionService;
 
 return [[
-    'class' => Noop::class,
-    'runEvery' => 'Always',
+    'class' => SessionGarbageCollectionService::class,
+    'runEvery' => 'DayAtMidnight',
 ]];
