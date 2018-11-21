@@ -2,12 +2,14 @@
 declare(strict_types=1);
 
 use src\app\Di;
+use Whoops\Run;
 use Relay\Relay;
 use Middlewares\FastRoute;
 use FastRoute\RouteCollector;
 use Middlewares\RequestHandler;
 use Grafikart\Csrf\CsrfMiddleware;
 use src\app\http\ActionParamRouter;
+use Whoops\Handler\PrettyPageHandler;
 use function FastRoute\simpleDispatcher;
 use Zend\Diactoros\ServerRequestFactory;
 use Franzl\Middleware\Whoops\WhoopsMiddleware;
@@ -20,8 +22,8 @@ if (getenv('DEV_MODE') === 'true') {
     ini_set('display_errors', '1');
     ini_set('display_startup_errors', '1');
     error_reporting(E_ALL);
-    $whoops = new \Whoops\Run;
-    $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+    $whoops = new Run();
+    $whoops->pushHandler(new PrettyPageHandler);
     $whoops->register();
     $middlewareQueue[] = new WhoopsMiddleware();
 }

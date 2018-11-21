@@ -6,10 +6,10 @@ namespace src\app\users\exceptions;
 use Exception;
 use Throwable;
 
-class PasswordTooShortException extends Exception
+class InvalidPasswordException extends Exception
 {
     public function __construct(
-        string $message = 'The specified password is too short',
+        string $message = 'The specified password is invalid',
         int $code = 500,
         Throwable $previous = null
     ) {

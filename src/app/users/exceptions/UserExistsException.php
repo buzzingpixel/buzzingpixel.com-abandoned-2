@@ -6,17 +6,8 @@ namespace src\app\users\exceptions;
 use Exception;
 use Throwable;
 
-/**
- * Class UserExistsException
- */
 class UserExistsException extends Exception
 {
-    /**
-     * InvalidActionQueueModel constructor
-     * @param string $message
-     * @param int $code
-     * @param Throwable|null $previous
-     */
     public function __construct(
         string $message = 'User already exists',
         int $code = 500,

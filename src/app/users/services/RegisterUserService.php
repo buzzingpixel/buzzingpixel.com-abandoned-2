@@ -69,7 +69,7 @@ class RegisterUserService
         $atlas->persist($record);
     }
 
-    public function doesUserExist(string $emailAddress): bool
+    private function doesUserExist(string $emailAddress): bool
     {
         $record = $this->atlas->make()->select(User::class)
             ->where('email_address =', $emailAddress)

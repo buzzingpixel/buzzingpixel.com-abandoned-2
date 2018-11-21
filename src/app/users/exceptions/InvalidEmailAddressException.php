@@ -6,17 +6,8 @@ namespace src\app\users\exceptions;
 use Exception;
 use Throwable;
 
-/**
- * Class InvalidEmailAddressException
- */
 class InvalidEmailAddressException extends Exception
 {
-    /**
-     * InvalidActionQueueModel constructor
-     * @param string $message
-     * @param int $code
-     * @param Throwable|null $previous
-     */
     public function __construct(
         string $message = 'The specified email address is invalid',
         int $code = 500,
