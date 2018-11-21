@@ -1,4 +1,5 @@
 - [x] Middleware for checking actions
-- [ ] Middleware for CSRF (https://github.com/Grafikart/PSR15-CsrfMiddleware)
+- [x] Middleware for CSRF (https://github.com/Grafikart/PSR15-CsrfMiddleware)
 - [ ] User login (https://www.johnmorrisonline.com/build-php-login-form-using-sessions/)
+- [ ] Get Twig set up
 - [ ] HTTP app: Use middleware to catch exceptions and display error pages when not in dev mode

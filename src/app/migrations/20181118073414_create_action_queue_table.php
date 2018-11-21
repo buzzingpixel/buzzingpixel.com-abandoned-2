@@ -3,15 +3,9 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-/**
- * Class CreateActionQueueTable
- * @noinspection AutoloadingIssuesInspection
- */
+/** @noinspection AutoloadingIssuesInspection */
 class CreateActionQueueTable extends AbstractMigration
 {
-    /**
-     * Creates the action queue table
-     */
     public function change(): void
     {
         $this->table('action_queue')
