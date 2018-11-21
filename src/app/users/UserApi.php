@@ -11,6 +11,7 @@ use src\app\users\services\LogUserInService;
 use src\app\users\services\FetchUserService;
 use src\app\users\services\RegisterUserService;
 use src\app\users\exceptions\UserExistsException;
+use src\app\users\services\LogCurrentUserOutService;
 use src\app\users\exceptions\InvalidPasswordException;
 use src\app\users\exceptions\UserDoesNotExistException;
 use src\app\users\services\ValidateUserPasswordService;
@@ -83,15 +84,26 @@ class UserApi
 
     /**
      * @throws DiBuilderException
-     * @throws UserExistsException
+     * @throws InvalidEmailAddressException
      * @throws InvalidPasswordException
      * @throws InvalidUserModelException
      * @throws UserDoesNotExistException
+     * @throws UserExistsException
      */
     public function logUserIn(string $emailAddress, string $password): void
     {
         /** @var LogUserInService $service */
         $service = $this->di->getFromDefinition(LogUserInService::class);
         $service($emailAddress, $password);
+    }
+
+    /**
+     * @throws DiBuilderException
+     */
+    public function logCurrentUserOut(): void
+    {
+        /** @var LogCurrentUserOutService $service */
+        $service = $this->di->getFromDefinition(LogCurrentUserOutService::class);
+        $service();
     }
 }

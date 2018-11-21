@@ -9,6 +9,7 @@ use src\app\users\exceptions\UserExistsException;
 use src\app\users\exceptions\InvalidPasswordException;
 use src\app\users\exceptions\UserDoesNotExistException;
 use src\app\users\exceptions\InvalidUserModelException;
+use src\app\users\exceptions\InvalidEmailAddressException;
 
 class LogUserInService
 {
@@ -37,6 +38,7 @@ class LogUserInService
      * @throws InvalidPasswordException
      * @throws UserDoesNotExistException
      * @throws InvalidUserModelException
+     * @throws InvalidEmailAddressException
      */
     public function __invoke(string $emailAddress, string $password): void
     {
@@ -48,6 +50,7 @@ class LogUserInService
      * @throws InvalidPasswordException
      * @throws UserDoesNotExistException
      * @throws InvalidUserModelException
+     * @throws InvalidEmailAddressException
      */
     public function logUserIn(string $emailAddress, string $password): void
     {
