@@ -29,9 +29,11 @@ class UserApi
 
     /**
      * @throws DiBuilderException
-     * @throws UserExistsException
-     * @throws PasswordTooShortException
      * @throws InvalidEmailAddressException
+     * @throws InvalidUserModelException
+     * @throws PasswordTooShortException
+     * @throws UserDoesNotExistException
+     * @throws UserExistsException
      */
     public function registerUser(string $emailAddress, string $password): void
     {
@@ -67,9 +69,10 @@ class UserApi
 
     /**
      * @throws DiBuilderException
-     * @throws UserExistsException
+     * @throws InvalidEmailAddressException
      * @throws InvalidUserModelException
      * @throws UserDoesNotExistException
+     * @throws UserExistsException
      */
     public function saveUser(UserModel $user): void
     {

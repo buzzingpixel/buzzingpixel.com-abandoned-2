@@ -13,6 +13,7 @@ use src\app\data\factory\AtlasFactory;
 use src\app\users\exceptions\UserExistsException;
 use src\app\users\exceptions\UserDoesNotExistException;
 use src\app\users\exceptions\InvalidUserModelException;
+use src\app\users\exceptions\InvalidEmailAddressException;
 
 class SaveUserService
 {
@@ -29,6 +30,7 @@ class SaveUserService
      * @throws UserExistsException
      * @throws InvalidUserModelException
      * @throws UserDoesNotExistException
+     * @throws InvalidEmailAddressException
      */
     public function __invoke(UserModel $userModel): void
     {
@@ -39,14 +41,18 @@ class SaveUserService
      * @throws UserExistsException
      * @throws InvalidUserModelException
      * @throws UserDoesNotExistException
+     * @throws InvalidEmailAddressException
      */
     public function saveUser(UserModel $userModel): void
     {
         if (! $userModel->passwordHash ||
-            ! $userModel->emailAddress ||
-            ! filter_var($userModel->emailAddress, FILTER_VALIDATE_EMAIL)
+            ! $userModel->emailAddress
         ) {
             throw new InvalidUserModelException();
+        }
+
+        if (! filter_var($userModel->emailAddress, FILTER_VALIDATE_EMAIL)) {
+            throw new InvalidEmailAddressException();
         }
 
         if (! $userModel->guid) {
