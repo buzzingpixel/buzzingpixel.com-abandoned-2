@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "af6567131fcfb50d4093c9ac44491da3",
+    "content-hash": "3ffa5025d620bfaba4660f54ce79bed2",
     "packages": [
         {
             "name": "atlas/cli",
@@ -2423,45 +2423,6 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2018-10-02T16:36:10+00:00"
-        },
-        {
-            "name": "tomkyle/cookies",
-            "version": "1.1.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tomkyle/Cookies.git",
-                "reference": "3b63a83f3d3c3bbe5ea18a0541a40f1bfadd27f6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tomkyle/Cookies/zipball/3b63a83f3d3c3bbe5ea18a0541a40f1bfadd27f6",
-                "reference": "3b63a83f3d3c3bbe5ea18a0541a40f1bfadd27f6",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "satooshi/php-coveralls": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "tomkyle\\Cookies\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Carsten Witt",
-                    "email": "tomkyle@posteo.de",
-                    "role": "Developer"
-                }
-            ],
-            "time": "2014-04-18T13:03:12+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
