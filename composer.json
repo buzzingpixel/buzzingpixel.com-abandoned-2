@@ -1,6 +1,7 @@
 {
     "require": {
         "php": ">=7.2",
+        "ext-json": "*",
         "vlucas/phpdotenv": "^2.5",
         "filp/whoops": "^2.3",
         "nunomaduro/collision": "^2.1",
@@ -16,7 +17,8 @@
         "atlas/orm": "^3.1",
         "atlas/cli": "^2.2",
         "ramsey/uuid": "^3.8",
-        "grafikart/psr15-csrf-middleware": "^1.0"
+        "grafikart/psr15-csrf-middleware": "^1.0",
+        "tomkyle/cookies": "^1.1"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master"
