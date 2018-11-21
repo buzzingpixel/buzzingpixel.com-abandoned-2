@@ -6,11 +6,14 @@ use Relay\Relay;
 use Middlewares\FastRoute;
 use FastRoute\RouteCollector;
 use Middlewares\RequestHandler;
+use Grafikart\Csrf\CsrfMiddleware;
 use src\app\http\ActionParamRouter;
 use function FastRoute\simpleDispatcher;
 use Zend\Diactoros\ServerRequestFactory;
 use Franzl\Middleware\Whoops\WhoopsMiddleware;
 use Zend\HttpHandlerRunner\Emitter\SapiEmitter;
+
+session_start();
 
 // If we're in dev mode, load up error reporting
 if (getenv('DEV_MODE') === 'true') {
@@ -21,6 +24,19 @@ if (getenv('DEV_MODE') === 'true') {
     $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
     $whoops->register();
     $middlewareQueue[] = new WhoopsMiddleware();
+}
+
+$uri = trim(ltrim($_SERVER['REQUEST_URI'], '/'), '/');
+$uriSegments = explode('/', parse_url($uri, PHP_URL_PATH));
+
+// Ignore these starting URI segments for CsrfChecking
+$csrfExempt = [
+    'api'
+];
+
+if (! in_array($uriSegments[0], $csrfExempt, true)) {
+    /** @noinspection PhpUnhandledExceptionInspection */
+    $middlewareQueue[] = Di::get(CsrfMiddleware::class);
 }
 
 /** @noinspection PhpUnhandledExceptionInspection */

@@ -1,3 +1,4 @@
 - [x] Middleware for checking actions
 - [ ] Middleware for CSRF (https://github.com/Grafikart/PSR15-CsrfMiddleware)
 - [ ] User login (https://www.johnmorrisonline.com/build-php-login-form-using-sessions/)
+- [ ] HTTP app: Use middleware to catch exceptions and display error pages when not in dev mode
