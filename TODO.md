@@ -1,5 +1,8 @@
 - [x] Middleware for checking actions
 - [x] Middleware for CSRF (https://github.com/Grafikart/PSR15-CsrfMiddleware)
-- [ ] User login (https://www.johnmorrisonline.com/build-php-login-form-using-sessions/)
+- [x] User login (https://www.johnmorrisonline.com/build-php-login-form-using-sessions/)
+- [ ] Task scheduling
+- [ ] Task for user session garbage collection
 - [ ] Get Twig set up
+- [ ] Static caching
 - [ ] HTTP app: Use middleware to catch exceptions and display error pages when not in dev mode

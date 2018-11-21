@@ -5,22 +5,11 @@ namespace src\app\cli\actions\core;
 
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * Class ActionsAction
- */
 class ActionsAction
 {
-    /** @var OutputInterface $consoleOutput */
     private $consoleOutput;
-
-    /** @var array $cliActionConfig */
     private $cliActionConfig;
 
-    /**
-     * ActionsAction constructor
-     * @param OutputInterface $consoleOutput
-     * @param array $cliActionConfig
-     */
     public function __construct(
         OutputInterface $consoleOutput,
         array $cliActionConfig
@@ -29,10 +18,6 @@ class ActionsAction
         $this->cliActionConfig = $cliActionConfig;
     }
 
-    /**
-     * Runs the action
-     * @return null|int
-     */
     public function __invoke(): ?int
     {
         $this->consoleOutput->writeln(

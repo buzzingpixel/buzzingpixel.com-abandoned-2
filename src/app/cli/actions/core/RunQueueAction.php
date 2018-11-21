@@ -11,9 +11,6 @@ use src\app\queue\services\MarkItemAsRunService;
 use src\app\queue\services\GetNextQueueItemService;
 use src\app\queue\services\MarkAsStoppedDueToErrorService;
 
-/**
- * Class RunQueueAction
- */
 class RunQueueAction
 {
     private $di;
