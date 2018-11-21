@@ -14,6 +14,7 @@ namespace src\app\data\UserSession;
  * @property mixed $added_at_time_zone varchar(255) NOT NULL
  * @property mixed $last_touched_at datetime NOT NULL
  * @property mixed $last_touched_at_time_zone varchar(255) NOT NULL
+ * @property null|false|\src\app\data\User\UserRecord $user
  */
 trait UserSessionFields
 {

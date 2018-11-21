@@ -10,12 +10,11 @@ class AddScheduleTrackingTable extends AbstractMigration
     {
         $this->table('schedule_tracking')
             ->addColumn('guid', 'string')
-            ->addColumn('schedule_name', 'string')
-            ->addColumn('is_running', 'boolean')
-            ->addColumn('last_run_start_at', 'datetime')
-            ->addColumn('last_run_start_at_time_zone', 'string')
-            ->addColumn('last_run_end_at', 'datetime')
-            ->addColumn('last_run_end_at_time_zone', 'string')
+            ->addColumn('is_running', 'boolean', ['default' => '0'])
+            ->addColumn('last_run_start_at', 'datetime', ['null' => true])
+            ->addColumn('last_run_start_at_time_zone', 'string', ['null' => true])
+            ->addColumn('last_run_end_at', 'datetime', ['null' => true])
+            ->addColumn('last_run_end_at_time_zone', 'string', ['null' => true])
             ->create();
     }
 }

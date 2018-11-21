@@ -13,6 +13,7 @@ namespace src\app\data\User;
  * @property mixed $password_hash varchar(255) NOT NULL
  * @property mixed $added_at datetime NOT NULL
  * @property mixed $added_at_time_zone varchar(255) NOT NULL
+ * @property null|\src\app\data\UserSession\UserSessionRecordSet $user_sessions
  */
 trait UserFields
 {

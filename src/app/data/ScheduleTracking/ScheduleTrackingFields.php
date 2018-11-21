@@ -10,10 +10,10 @@ namespace src\app\data\ScheduleTracking;
  * @property mixed $id int(10,0) NOT NULL
  * @property mixed $guid varchar(255) NOT NULL
  * @property mixed $is_running tinyint(3,0) NOT NULL
- * @property mixed $last_run_start_at datetime NOT NULL
- * @property mixed $last_run_start_at_time_zone varchar(255) NOT NULL
- * @property mixed $last_run_end_at datetime NOT NULL
- * @property mixed $last_run_end_at_time_zone varchar(255) NOT NULL
+ * @property mixed $last_run_start_at datetime
+ * @property mixed $last_run_start_at_time_zone varchar(255)
+ * @property mixed $last_run_end_at datetime
+ * @property mixed $last_run_end_at_time_zone varchar(255)
  */
 trait ScheduleTrackingFields
 {
