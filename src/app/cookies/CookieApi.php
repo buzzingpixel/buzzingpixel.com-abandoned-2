@@ -76,6 +76,6 @@ class CookieApi
     public function deleteCookieByName(string $name): void
     {
         unset($this->cookies[$name]);
-        setcookie($name, null, -1);
+        setcookie($name, '', -1);
     }
 }
