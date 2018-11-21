@@ -11,6 +11,7 @@ use src\app\users\services\LogUserInService;
 use src\app\users\services\FetchUserService;
 use src\app\users\services\RegisterUserService;
 use src\app\users\exceptions\UserExistsException;
+use src\app\users\services\FetchCurrentUserService;
 use src\app\users\services\LogCurrentUserOutService;
 use src\app\users\exceptions\InvalidPasswordException;
 use src\app\users\exceptions\UserDoesNotExistException;
@@ -51,6 +52,16 @@ class UserApi
         /** @var FetchUserService $service */
         $service = $this->di->getFromDefinition(FetchUserService::class);
         return $service($identifier);
+    }
+
+    /**
+     * @throws DiBuilderException
+     */
+    public function fetchCurrentUser(): ?UserModel
+    {
+        /** @var FetchCurrentUserService $service */
+        $service = $this->di->getFromDefinition(FetchCurrentUserService::class);
+        return $service();
     }
 
     /**
