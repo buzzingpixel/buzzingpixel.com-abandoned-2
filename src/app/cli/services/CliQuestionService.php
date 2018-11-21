@@ -14,25 +14,11 @@ use Symfony\Component\Console\Helper\HelperInterface;
  */
 class CliQuestionService
 {
-    /** @var QuestionHelper $questionHelper */
     private $questionHelper;
-
-    /** @var InputInterface $consoleInput */
     private $consoleInput;
-
-    /** @var OutputInterface $consoleOutput */
     private $consoleOutput;
-
-    /** @var ConsoleQuestionFactory $consoleQuestionFactory */
     private $consoleQuestionFactory;
 
-    /**
-     * CliQuestionService constructor
-     * @param HelperInterface $questionHelper
-     * @param InputInterface $consoleInput
-     * @param OutputInterface $consoleOutput
-     * @param ConsoleQuestionFactory $consoleQuestionFactory
-     */
     public function __construct(
         HelperInterface $questionHelper,
         InputInterface $consoleInput,
@@ -45,15 +31,16 @@ class CliQuestionService
         $this->consoleQuestionFactory = $consoleQuestionFactory;
     }
 
-    /**
-     * Asks a question on the CLI and returns the string response
-     * @param string $question
-     * @param bool $required
-     * @return string
-     */
-    public function ask(string $question, bool $required = true): string
-    {
+    public function ask(
+        string $question,
+        bool $required = true,
+        bool $hidden = false
+    ): string {
         $questionEntity = $this->consoleQuestionFactory->make($question);
+
+        if ($hidden) {
+            $questionEntity->setHidden(true);
+        }
 
         $val = '';
 
