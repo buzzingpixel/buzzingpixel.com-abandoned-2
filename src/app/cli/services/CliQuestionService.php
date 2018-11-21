@@ -5,13 +5,9 @@ namespace src\app\cli\services;
 
 use src\app\cli\factories\ConsoleQuestionFactory;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\HelperInterface;
 
-/**
- * Class CliQuestionService
- */
 class CliQuestionService
 {
     private $questionHelper;

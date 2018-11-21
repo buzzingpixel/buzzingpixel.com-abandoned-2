@@ -58,7 +58,7 @@ class RunQueueAction
         }
 
         if (! $constructedClass) {
-            $constructedClass = new $item->class();
+            $constructedClass = new $item->class;
         }
 
         $constructedClass->{$item->method}($item->context);
