@@ -19,7 +19,8 @@
         "atlas/cli": "^2.2",
         "ramsey/uuid": "^3.8",
         "grafikart/psr15-csrf-middleware": "^1.0",
-        "twig/twig": "^2.5"
+        "twig/twig": "^2.5",
+        "mrclay/minify": "^3.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master"

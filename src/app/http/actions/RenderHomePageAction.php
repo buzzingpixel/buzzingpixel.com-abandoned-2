@@ -7,16 +7,22 @@ use Twig\Environment;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use src\app\http\services\MinifyHtmlService;
 
 class RenderHomePageAction
 {
     private $twig;
     private $response;
+    private $minifyHtml;
 
-    public function __construct(Environment $twig, ResponseInterface $response)
-    {
+    public function __construct(
+        Environment $twig,
+        ResponseInterface $response,
+        MinifyHtmlService $minifyHtml
+    ) {
         $this->twig = $twig;
         $this->response = $response;
+        $this->minifyHtml = $minifyHtml;
     }
 
     /**
@@ -29,7 +35,13 @@ class RenderHomePageAction
         RequestHandlerInterface $handler
     ) {
         $response = $this->response->withHeader('Content-Type', 'text/html');
-        $response->getBody()->write($this->twig->render('index.twig'));
+
+        $response->getBody()->write(
+            $this->minifyHtml->minifyHtml(
+                $this->twig->render('index.twig')
+            )
+        );
+
         return $response;
     }
 }
