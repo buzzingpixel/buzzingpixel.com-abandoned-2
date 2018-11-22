@@ -21,7 +21,9 @@
         "grafikart/psr15-csrf-middleware": "^1.0",
         "twig/twig": "^2.5",
         "mrclay/minify": "^3.0",
-        "symfony/filesystem": "^4.1"
+        "symfony/filesystem": "^4.1",
+        "michelf/php-smartypants": "^1.8",
+        "timostamm/text-truncation": "dev-master"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master"
