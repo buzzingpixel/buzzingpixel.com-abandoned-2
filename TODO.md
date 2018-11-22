@@ -6,5 +6,5 @@
 - [x] Get Twig set up
 - [x] Minify HTML
 - [x] Static caching
-- [ ] HTTP app: Use middleware to catch exceptions and display error pages when not in dev mode
+- [x] HTTP app: Use middleware to catch exceptions and display error pages when not in dev mode
 - [ ] Set up build process

@@ -1,7 +1,13 @@
 {# @var int statusCode #}
 <html>
 <head>
-    <title>Server Error 500</title>
+    <title>
+        {% if statusCode == 404 %}
+            Page not found
+        {% else %}
+            Internal server error
+        {% endif %}
+    </title>
     <style>
         html,
         body {

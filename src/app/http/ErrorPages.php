@@ -27,9 +27,15 @@ class ErrorPages implements MiddlewareInterface
         try {
             return $handler->handle($request);
         } catch (Throwable $e) {
-            return ($this->renderErrorPage)(
-                $e instanceof Http404Exception ? 404 : 500
-            );
+            $code = 500;
+
+            if ($e instanceof Http404Exception ||
+                $e->getPrevious() instanceof Http404Exception
+            ) {
+                $code = 404;
+            }
+
+            return ($this->renderErrorPage)($code);
         }
     }
 }
