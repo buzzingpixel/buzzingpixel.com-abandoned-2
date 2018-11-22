@@ -3,6 +3,8 @@
 - [x] User login (https://www.johnmorrisonline.com/build-php-login-form-using-sessions/)
 - [x] Task scheduling
 - [x] Task for user session garbage collection
-- [ ] Get Twig set up
+- [x] Get Twig set up
+- [x] Minify HTML
 - [ ] Static caching
 - [ ] HTTP app: Use middleware to catch exceptions and display error pages when not in dev mode
+- [ ] Set up build process
