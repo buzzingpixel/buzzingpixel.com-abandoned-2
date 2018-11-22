@@ -4,10 +4,10 @@ declare(strict_types=1);
 use src\app\Di;
 use Whoops\Run;
 use Relay\Relay;
-use Middlewares\FastRoute;
 use src\app\http\ErrorPages;
 use FastRoute\RouteCollector;
 use Middlewares\RequestHandler;
+use src\app\http\RouteProcessor;
 use Grafikart\Csrf\CsrfMiddleware;
 use src\app\http\ActionParamRouter;
 use Whoops\Handler\PrettyPageHandler;
@@ -53,7 +53,7 @@ if (! in_array($uriSegments[0], $csrfExempt, true)) {
     $middlewareQueue[] = Di::get(ActionParamRouter::class);
 }
 
-$middlewareQueue[] = new FastRoute(simpleDispatcher(
+$middlewareQueue[] = new RouteProcessor(simpleDispatcher(
     function (RouteCollector $routeCollector) {
         $sep = DIRECTORY_SEPARATOR;
         require APP_BASE_PATH . $sep . 'src' . $sep .'config' . $sep . 'http' .

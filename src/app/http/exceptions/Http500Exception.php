@@ -6,7 +6,7 @@ namespace src\app\http\exceptions;
 use Exception;
 use Throwable;
 
-class Http404Exception extends Exception
+class Http500Exception extends Exception
 {
     public function __construct(
         string $message = '',
