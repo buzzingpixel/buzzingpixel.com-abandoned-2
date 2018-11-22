@@ -8,21 +8,25 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use src\app\http\services\MinifyHtmlService;
+use src\app\http\services\WriteHtmlToStaticCacheService;
 
 class RenderHomePageAction
 {
     private $twig;
     private $response;
     private $minifyHtml;
+    private $writeHtmlToStaticCache;
 
     public function __construct(
         Environment $twig,
         ResponseInterface $response,
-        MinifyHtmlService $minifyHtml
+        MinifyHtmlService $minifyHtml,
+        WriteHtmlToStaticCacheService $writeHtmlToStaticCache
     ) {
         $this->twig = $twig;
         $this->response = $response;
         $this->minifyHtml = $minifyHtml;
+        $this->writeHtmlToStaticCache = $writeHtmlToStaticCache;
     }
 
     /**
@@ -37,8 +41,10 @@ class RenderHomePageAction
         $response = $this->response->withHeader('Content-Type', 'text/html');
 
         $response->getBody()->write(
-            $this->minifyHtml->minifyHtml(
-                $this->twig->render('index.twig')
+            $this->writeHtmlToStaticCache->write(
+                $this->minifyHtml->minifyHtml(
+                    $this->twig->render('index.twig')
+                )
             )
         );
 

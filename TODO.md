@@ -5,6 +5,6 @@
 - [x] Task for user session garbage collection
 - [x] Get Twig set up
 - [x] Minify HTML
-- [ ] Static caching
+- [x] Static caching
 - [ ] HTTP app: Use middleware to catch exceptions and display error pages when not in dev mode
 - [ ] Set up build process
