@@ -1,0 +1,59 @@
+{# @var int statusCode #}
+<html>
+<head>
+    <title>Server Error 500</title>
+    <style>
+        html,
+        body {
+            background-color: #f9f9f9;
+            border: 0;
+            box-sizing: border-box;
+            font-family: Arial,sans-serif;
+            line-height: 1.6em;
+            margin: 0;
+        }
+        .Container {
+            box-sizing: border-box;
+            left: 50%;
+            max-width: 400px;
+            position: absolute;
+            top: 50%;
+            width: calc(100% - 40px);
+            transform: translate(-50%, -50%);
+
+            -webkit-box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+            box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+        }
+        .Container__Heading {
+            background-color: #e1470f;
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 15px 30px;
+        }
+        .Container__Body {
+            font-size: 16px;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="Container">
+        <div class="Container__Heading">
+            {% if statusCode == 404 %}
+                Page Not Found
+            {% else %}
+                Internal Server Error
+            {% endif %}
+        </div>
+        <div class="Container__Body">
+            {% if statusCode == 404 %}
+                The requested page could not be found
+            {% else %}
+                The server encountered an error processing this request
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
