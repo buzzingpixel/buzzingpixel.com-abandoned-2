@@ -1,0 +1,6 @@
+{
+    "proxy": "http://buzzingpixel.test:48494/",
+    "watch": [
+        "src/**"
+    ]
+}
