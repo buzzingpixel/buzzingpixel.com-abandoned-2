@@ -14,6 +14,8 @@ class UtilitiesTwigExtension extends Twig_Extension
     {
         return [
             new Twig_Function('throwHttpError', [$this, 'throwHttpError']),
+            new Twig_Function('getenv', [$this, 'getenv']),
+            new Twig_Function('fileTime', [$this, 'fileTime']),
         ];
     }
 
@@ -28,5 +30,37 @@ class UtilitiesTwigExtension extends Twig_Extension
         }
 
         throw new Http500Exception();
+    }
+
+    public function getenv(string $which)
+    {
+        return getenv($which);
+    }
+
+    public function fileTime(string $filePath = '', $uniqidFallback = true): string
+    {
+        if (file_exists($filePath)) {
+            return (string) filemtime($filePath);
+        }
+
+        $filePath = ltrim($filePath, '/');
+        $newPath = APP_BASE_PATH . '/' . $filePath;
+
+        if (file_exists($newPath)) {
+            return (string) filemtime($newPath);
+        }
+
+        $filePath = ltrim($filePath, '/');
+        $newPath = APP_BASE_PATH . '/public/' . $filePath;
+
+        if (file_exists($newPath)) {
+            return (string) filemtime($newPath);
+        }
+
+        if ($uniqidFallback) {
+            return uniqid('', false);
+        }
+
+        return '0';
     }
 }

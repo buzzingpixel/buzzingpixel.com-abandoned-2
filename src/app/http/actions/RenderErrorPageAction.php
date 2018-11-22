@@ -35,7 +35,7 @@ class RenderErrorPageAction
 
         $response->getBody()->write(
             $this->minifyHtml->minifyHtml(
-                $this->twig->render('ServerError.twig', [
+                $this->twig->render('errors/ServerError.twig', [
                     'statusCode' => $statusCode,
                 ])
             )

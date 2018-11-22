@@ -22,6 +22,12 @@ return [
             'cache' => APP_BASE_PATH . $sep . 'cache',
         ]);
 
+        $globals = include __DIR__ . $sep . 'globals' . $sep . '_collector.php';
+
+        foreach ($globals as $key => $val) {
+            $twig->addGlobal($key, $val);
+        }
+
         $twig->addExtension(Di::get(UtilitiesTwigExtension::class));
 
         if ($debug) {
