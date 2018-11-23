@@ -43,7 +43,7 @@ class RenderHomePageAction
         $response->getBody()->write(
             $this->writeHtmlToStaticCache->write(
                 $this->minifyHtml->minifyHtml(
-                    $this->twig->render('core/Index.twig')
+                    $this->twig->render('StandardPage.twig')
                 )
             )
         );

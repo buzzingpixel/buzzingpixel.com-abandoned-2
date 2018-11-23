@@ -83,7 +83,12 @@
 {{ block('beginBody') ?? '' }}
 
 {# Get the content #}
-{{ block('layoutContent') ?? '' }}
+<main>
+    {{ block('content') ?? '' }}
+</main>
+
+{# Include the footer #}
+{% include '_partials/SiteFooter.twig' %}
 
 {# Include jQuery #}
 <script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

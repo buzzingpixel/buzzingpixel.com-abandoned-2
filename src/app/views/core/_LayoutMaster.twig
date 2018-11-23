@@ -1,9 +1,0 @@
-{% extends 'core/_LayoutHtmlWrapper.twig' %}
-
-{% block layoutContent %}
-    {% include '_partials/SiteHeader.twig' %}
-    <main>
-        {{ block('content') ?? '' }}
-    </main>
-    {% include '_partials/SiteFooter.twig' %}
-{% endblock %}
