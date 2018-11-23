@@ -23,7 +23,8 @@
         "mrclay/minify": "^3.0",
         "symfony/filesystem": "^4.1",
         "michelf/php-smartypants": "^1.8",
-        "timostamm/text-truncation": "dev-master"
+        "timostamm/text-truncation": "dev-master",
+        "cebe/markdown": "^1.2"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master"
