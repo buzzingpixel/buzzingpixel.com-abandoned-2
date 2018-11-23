@@ -69,6 +69,9 @@
     {# <meta property="twitter:image" content="{{ shareImage|default('/share.png') }}"> #}
     {{ block('twitterData') ?? '' }}
 
+    {# Google Fonts #}
+    <link href="https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i|Noto+Sans+SC:100,300,400,500,700,900" rel="stylesheet">
+
     {# Include custom styles #}
     <link rel="stylesheet" href="/assets/css/style.min{% if staticAssetCacheTime %}.{{ staticAssetCacheTime }}{% endif %}.css{% if not staticAssetCacheTime %}?v={{ fileTime('/assets/css/style.min.css') }}{% endif %}">
 
