@@ -2,14 +2,17 @@
 {% set persistentItems = nav.persistentItems %}
 {% set items = nav.items %}
 
-<nav class="SiteNav">
+<nav
+    class="SiteNav"
+    data-active-class="SiteNav--IsActive"
+>
     <ul class="SiteNav__List">
         <li class="SiteNav__ListItem SiteNav__ListItem--IsPersistent SiteNav__ListItem--IsIconBased">
             <a href="/" class="SiteNav__ListItemInner">
                 <span class="SiteNav__ListItemIcon SiteNav__ListItemIcon--IsLogo">
                     {% include 'svg/logo-wide.svg' %}
                 </span>
-                <span class="SiteNav__ListItemContent SiteNav__ListItemContent--IsHidden">
+                <span class="SiteNav__ListItemContent SiteNav__ListItemContent--IsBesideLogo SiteNav__ListItemContent--IsHidden">
                     BuzzingPixel.com
                 </span>
             </a>
@@ -17,10 +20,13 @@
         {% for item in persistentItems %}
             <li class="SiteNav__ListItem SiteNav__ListItem--IsPersistent SiteNav__ListItem--IsIconBased">
                 <a href="{{ item.href }}" class="SiteNav__ListItemInner">
+                    {% if item['hasBadgeMarkup'] is defined and item['hasBadgeMarkup'] %}
+                        <span class="SiteNav__ListItemBadge SiteNav__ListItemBadge--IsHidden{% if item['badgeClass'] is defined %} {{ item.badgeClass }}{% endif %}"></span>
+                    {% endif %}
                     <span class="SiteNav__ListItemIcon">
                         {% include item.svgIconTemplate %}
                     </span>
-                    <span class="SiteNav__ListItemContent">
+                    <span class="SiteNav__ListItemContent SiteNav__ListItemContent--IsBesideLogo">
                         {{ item.content|smartypants }}
                     </span>
                 </a>

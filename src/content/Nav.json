@@ -3,7 +3,9 @@
         {
             "svgIconTemplate": "svg/cart-icon.svg",
             "href": "/cart",
-            "content": "Cart"
+            "content": "Cart",
+            "hasBadgeMarkup": true,
+            "badgeClass": "JS-CartCount"
         },
         {
             "svgIconTemplate": "svg/account-icon.svg",
