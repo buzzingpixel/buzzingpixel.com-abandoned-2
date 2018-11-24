@@ -43,12 +43,14 @@ class GetContentFromDirectory
                     continue;
                 }
 
-                $layers[] = $parsed;
+                $layers[$file] = $parsed;
             }
         }
 
+        ksort($layers);
+
         return array_merge($indexParsed, [
-            'layers' => $layers,
+            'layers' => array_values($layers),
         ]);
     }
 }
