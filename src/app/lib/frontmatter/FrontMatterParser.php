@@ -46,11 +46,13 @@ class FrontMatterParser
             $contents = $frontmatter->getContents();
         }
 
-        return [
+        /**
+         * MODIFIED BY TJ TO MEET MY OWN NEEDS
+         */
+        return array_merge($meta, [
             'markdown' => $contents,
-            'meta' => $meta,
             'html' => $this->markdown->parse($contents)
-        ];
+        ]);
     }
 
     /**
