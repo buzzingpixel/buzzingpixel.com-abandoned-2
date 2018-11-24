@@ -33,6 +33,7 @@ class UtilitiesTwigExtension extends Twig_Extension
             new Twig_Function('throwHttpError', [$this, 'throwHttpError']),
             new Twig_Function('getenv', [$this, 'getenv']),
             new Twig_Function('fileTime', [$this, 'fileTime']),
+            new Twig_Function('buzzingPixelNav', [$this, 'buzzingPixelNav']),
         ];
     }
 
@@ -150,5 +151,13 @@ class UtilitiesTwigExtension extends Twig_Extension
         );
 
         return new Twig_Markup($truncation->truncate($val), 'UTF-8');
+    }
+
+    public function buzzingPixelNav(): array
+    {
+        return json_decode(
+            file_get_contents(APP_BASE_PATH . '/src/content/Nav.json'),
+            true
+        );
     }
 }

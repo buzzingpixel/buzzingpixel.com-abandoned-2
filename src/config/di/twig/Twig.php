@@ -20,6 +20,7 @@ return [
         $twig = new Environment($loader, [
             'debug' => $debug,
             'cache' => APP_BASE_PATH . $sep . 'cache',
+            'strict_variables' => $debug,
         ]);
 
         $globals = include __DIR__ . $sep . 'globals' . $sep . '_collector.php';

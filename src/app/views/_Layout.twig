@@ -3,7 +3,7 @@
 {% set metaDescription = metaDescription|default(false) %}
 {% set ogType = ogType|default('website') %}
 {% set twitterCardType = twitterCardType|default('summary') %}
-{% set staticAssetCacheTime = craft.app.config.general.staticAssetCacheTime %}
+{% set staticAssetCacheTime = staticAssetCacheTime|default(false) %}
 
 <!doctype html>
 <html lang="en">
@@ -82,13 +82,15 @@
 {# Get any queued up body items #}
 {{ block('beginBody') ?? '' }}
 
+{% include 'partials/Menu.twig' only %}
+
 {# Get the content #}
 <main>
     {{ block('content') ?? '' }}
 </main>
 
 {# Include the footer #}
-{% include '_partials/SiteFooter.twig' %}
+{% include 'partials/SiteFooter.twig' %}
 
 {# Include jQuery #}
 <script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
