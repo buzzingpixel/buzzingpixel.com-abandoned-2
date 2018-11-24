@@ -4,6 +4,8 @@
 {% set ogType = ogType|default('website') %}
 {% set twitterCardType = twitterCardType|default('summary') %}
 {% set staticAssetCacheTime = staticAssetCacheTime|default(false) %}
+{% set headingBackground = headingBackground|default(false) %}
+{% set headingBackground = headingBackground['href'] is defined ? headingBackground : false %}
 
 <!doctype html>
 <html lang="en">
@@ -86,8 +88,35 @@
 
 {# Get the content #}
 <main class="SiteMain">
-    {{ block('content') ?? '' }}
+    {% if headingBackground %}
+        <span class="HeadingBackground">
+            <span class="HeadingBackground__Inner">
+                <picture>
+                    {% if headingBackground['sizes'] is defined %}
+                        {% for img in headingBackground.sizes %}
+                            <source
+                                srcset="{{ img.href }}{% if img.href2x %} 1x,
+                                        {{ img.href2x }} 2x{% endif %}"
+                                media="(min-width: {{ img.minWidth }}px) and (max-width: {{ img.maxWidth }}px)"
+                            >
+                        {% endfor %}
+                    {% endif %}
+                    <img
+                        src="{{ headingBackground.href }}"
+                        {% if headingBackground['href2x'] is defined %}
+                        srcset="{{ headingBackground.href }} 1x,
+                                {{ headingBackground.href2x }} 2x"
+                        {% endif %}
+                        alt=""
+                        class="HeadingBackground__Img"
+                    >
+                </picture>
+            </span>
+        </span>
+    {% endif %}
     <div class="SiteContent">
+        {{ block('content') ?? '' }}
+    </div>
 </main>
 
 {# Include the footer #}
