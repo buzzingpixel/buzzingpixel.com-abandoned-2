@@ -85,8 +85,9 @@
 {% include 'partials/Menu.twig' only %}
 
 {# Get the content #}
-<main>
+<main class="SiteMain">
     {{ block('content') ?? '' }}
+    <div class="SiteContent">
 </main>
 
 {# Include the footer #}
