@@ -3,7 +3,7 @@
 {% set items = nav.items %}
 
 <nav
-    class="SiteNav"
+    class="SiteNav JS-SiteNav"
     data-active-class="SiteNav--IsActive"
 >
     <ul class="SiteNav__List">
@@ -32,7 +32,7 @@
                 </a>
             </li>
         {% endfor %}
-        <li class="SiteNav__ListItem SiteNav__ListItem--IsPersistent SiteNav__ListItem--IsIconBased">
+        <li class="SiteNav__ListItem SiteNav__ListItem--IsPersistent SiteNav__ListItem--IsIconBased JS-SiteNav__Expander">
             <span class="SiteNav__ListItemInner">
                 <span class="SiteNav__ListItemIcon SiteNav__ListItemIcon--IsMoreExpander">
                     {% include 'svg/plus-icon.svg' %}
