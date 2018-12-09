@@ -60,7 +60,7 @@ class GetNextQueueItemService
             $model->isFinished = false;
             $model->class = $item->class;
             $model->method = $item->method;
-            $model->context = json_decode($item->context) ?? [];
+            $model->context = json_decode($item->context, true) ?? [];
 
             return $model;
         } catch (Exception $e) {
