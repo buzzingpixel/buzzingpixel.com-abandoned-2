@@ -37,7 +37,7 @@ class UtilitiesTwigExtension extends Twig_Extension
         ];
     }
 
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
             new Twig_Filter('widont', [$this, 'widontFilter']),

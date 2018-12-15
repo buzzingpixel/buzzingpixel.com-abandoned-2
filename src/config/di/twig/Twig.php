@@ -5,6 +5,7 @@ use src\app\Di;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Twig\Extension\DebugExtension;
+use buzzingpixel\twigswitch\SwitchTwigExtension;
 use src\app\http\twigextensions\UtilitiesTwigExtension;
 
 return [
@@ -30,6 +31,8 @@ return [
         }
 
         $twig->addExtension(Di::get(UtilitiesTwigExtension::class));
+
+        $twig->addExtension(new SwitchTwigExtension());
 
         if ($debug) {
             $twig->addExtension(new DebugExtension());

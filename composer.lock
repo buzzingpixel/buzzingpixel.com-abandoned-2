@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5cd79e247f450205e39e226d353d6290",
+    "content-hash": "b7f6e9df99e09d068aa5102c3f28cfda",
     "packages": [
         {
             "name": "atlas/cli",
@@ -369,6 +369,44 @@
                 "table"
             ],
             "time": "2018-08-12T20:46:15+00:00"
+        },
+        {
+            "name": "buzzingpixel/twig-switch",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/buzzingpixel/twig-switch.git",
+                "reference": "1ee5987f43f92af844ae6368191e623ca523be65"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/buzzingpixel/twig-switch/zipball/1ee5987f43f92af844ae6368191e623ca523be65",
+                "reference": "1ee5987f43f92af844ae6368191e623ca523be65",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "twig/twig": "^2.5"
+            },
+            "require-dev": {
+                "roave/security-advisories": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "buzzingpixel\\twigswitch\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "TJ Draper",
+                    "email": "tj@buzzingpixel.com",
+                    "homepage": "https://buzzingpixel.com"
+                }
+            ],
+            "description": "Provides a {% switch %} tag for Twig switch case statements",
+            "time": "2018-12-15T22:36:19+00:00"
         },
         {
             "name": "cakephp/cache",
