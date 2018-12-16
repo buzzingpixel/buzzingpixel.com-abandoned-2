@@ -1,0 +1,27 @@
+{% set layers = layers ?? {} %}
+
+{% for layer in layers %}
+    {% set layerType = layer.layerType|ucfirst ~ '' %}
+
+    {% set payload = {
+        layer: layer,
+    } %}
+
+    {% switch layerType %}
+        {% case 'ShowCase' %}
+            {% include 'pageBuilder/ShowCase.twig' with payload only %}
+        {% default %}
+            {% if devMode %}
+                <div style="text-align: center;">
+                    <br><br><br>
+<pre>
+=====================================<br>
+TODO: Implement layer type: {{ layerType }}<br>
+=====================================<br>
+</pre>
+                <br><br><br>
+                </div>
+            {% endif %}
+    {% endswitch %}
+
+{% endfor %}

@@ -1,11 +1,7 @@
 {% extends '_Layout.twig' %}
 
 {% block content %}
-    {# TODO: Implement \src\app\http\actions\RenderHomePageAction::__invoke() method. #}
-    TODO: Implement \src\app\http\actions\RenderHomePageAction::__invoke() method.
-    <div>
-        <p>
-            Lorem ip'sum dolor sit amet, consectetur adipisicing elit. Ab aut autem consequatur error et fugiat illum ipsa iste iure minus nam officia omnis, qui quis, similique soluta ullam voluptas voluptate?
-        </p>
-    </div>
+    {% include 'pageBuilder/_includer.twig' with {
+        layers: layers
+    } only %}
 {% endblock %}

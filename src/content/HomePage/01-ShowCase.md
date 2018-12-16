@@ -14,8 +14,14 @@
         }
     ],
     "showCaseImage": {
-        "baseImage": "TODO",
-        "sizes": [],
-        "alt": ""
+        "baseImage": "/content-images/ansel-craft-screen-shot/ansel-craft-screen-shot.jpg",
+        "TODO-sizes": [
+            {
+                "1x": "/path/to/img.jpg",
+                "2x": "/path/to/img@2x.jpg",
+                "mediaQuery": "(min-width: 1px) and (max-width: 499px)"
+            }
+        ],
+        "alt": "Ansel Screen Shot"
     }
 }
