@@ -1,10 +1,12 @@
 {% set layers = layers ?? {} %}
+{% set hasHeadingBackground = hasHeadingBackground ?? false %}
 
 {% for layer in layers %}
     {% set layerType = layer.layerType|ucfirst ~ '' %}
 
     {% set payload = {
         layer: layer,
+        hasHeadingBackground: hasHeadingBackground,
     } %}
 
     {% switch layerType %}

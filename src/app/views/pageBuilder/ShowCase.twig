@@ -1,3 +1,6 @@
 {% set layer = layer ?? [] %}
+{% set hasHeadingBackground = hasHeadingBackground ?? false %}
 
-{% include 'layers/ShowCase.twig' with layer only %}
+{% include 'layers/ShowCase.twig' with layer|merge({
+    overDark: hasHeadingBackground,
+}) only %}

@@ -1,6 +1,6 @@
 {
     "layerType": "ShowCase",
-    "preHeadline": "Thingy",
+    "preHeadline": "Take Your Images to the Next Level",
     "headline": "Ansel",
     "subHeadline": "for Craft and ExpressionEngine",
     "cta": [
@@ -10,7 +10,7 @@
         },
         {
             "content": "Ansel for Craft",
-            "href": "/software/ansel-ee"
+            "href": "/software/ansel-craft"
         }
     ],
     "showCaseImage": {

@@ -1,7 +1,9 @@
 {% extends '_Layout.twig' %}
+{% set hasHeadingBackground = headingBackground is defined and headingBackground|length %}
 
 {% block content %}
     {% include 'pageBuilder/_includer.twig' with {
-        layers: layers
+        layers: layers,
+        hasHeadingBackground: hasHeadingBackground,
     } only %}
 {% endblock %}
