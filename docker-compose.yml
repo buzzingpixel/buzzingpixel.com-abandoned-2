@@ -19,6 +19,7 @@ services:
   php:
     image: buzzingpixel/php7.2:latest
     container_name: php-buzzingpixel
+    user: "1000:50"
     volumes:
       - .:/app:delegated
       - ./dev/null:/app/.git:delegated
